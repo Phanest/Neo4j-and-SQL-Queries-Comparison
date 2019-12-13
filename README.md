@@ -3,7 +3,7 @@ A Study In Neo4j. As part of a course assignment and using data from the Eurovis
 
 Contents of this repository:
   - Databases - Contains both the Neo4j and SQL databases
-      -Empty Databases - The empty SQL database, cypher recipes for populating the graph database, SQL forms for creating the database tables
+    - Empty Databases - The empty SQL database, cypher recipes for populating the graph database, SQL forms for creating the database tables
   - Queries - Includes the queries for the Neo4j and SQL databases
   - Scripts
       - ExcelToDatabase.py - A Python script to format the original Excel file for input in the SQL database
