@@ -1,0 +1,59 @@
+CREATE TABLE Song(
+    songid INTEGER PRIMARY KEY,
+    name TEXT,
+    english TEXT,
+    artistid INTEGER REFERENCES Artist(artistid)
+)
+
+CREATE TABLE Artist(
+    artistid INTEGER PRIMARY KEY,
+    name TEXT,
+    gender CHAR(1)
+);
+
+CREATE TABLE Language(
+    songid INTEGER PRIMARY KEY
+        REFERENCES Song(songid),
+    language TEXT
+);
+
+CREATE TABLE Country(
+    name TEXT PRIMARY KEY,
+    region TEXT
+);
+
+CREATE TABLE Eurovision(
+    euroid INTEGER PRIMARY KEY,
+    hostid INTEGER REFERENCES Country(name),
+    year INTEGER
+);
+
+CREATE TABLE Finale(
+    euroid INTEGER REFERENCES Eurovision(euroid) ON DELETE CASCADE,
+    type TEXT,
+    PRIMARY KEY(euroid, type)
+);
+
+CREATE TABLE Bets(
+    countryid TEXT REFERENCES Country(name),
+    euroid TEXT REFERENCES Finale(euroid),
+    type TEXT REFERENCES Finale(type),
+    coefficient REAL,
+    PRIMARY KEY(countryid, euroid, type)
+);
+
+CREATE TABLE Vote(
+    from_country TEXT REFERENCES Country(name),
+    to_country TEXT REFERENCES Country(name),
+    euroid INTEGER REFERENCES Finale(euroid),
+    type TEXT REFERENCES Finale(type),
+    points INTEGER,
+    PRIMARY KEY(from_country, to_country, euroid, type)
+);
+
+CREATE TABLE Competed(
+    songid INTEGER REFERENCES Song(songid),
+    euroid INTEGER REFERENCES Finale(euroid),
+    country TEXT REFERENCES Country(name),
+    PRIMARY KEY(songid, euroid, country)
+);
