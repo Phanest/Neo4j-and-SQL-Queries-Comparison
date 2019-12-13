@@ -7,4 +7,4 @@ Contents of this repository:
   - Queries - Includes the queries for the Neo4j and SQL databases
   - Scripts
       - ExcelToDatabase.py - A Python script to format the original Excel file for input in the SQL database
-      - ExcelToGraph.py - A Python script that inserts the data from the Excel file to the Graph database. A lot of these functions were replaced in favour of the cypher script in the 'Empty Databases' folder
+      - ExcelToGraph.py - A Python script that inserts the data from the Excel file to the Graph database. A lot of these functions were swapped in favour of the cypher script in the 'Empty Databases' folder
